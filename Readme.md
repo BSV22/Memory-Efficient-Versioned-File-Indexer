@@ -6,30 +6,32 @@
 
 This project implements a **memory-efficient versioned file indexer in C++** that handles large text files using a **fixed-size buffer** and builds a **word-level index**. The system supports multiple analytical queries while ensuring that the entire file is **never loaded into memory**.
 
-By “word-level index,” we mean a data structure that reads the input file incrementally and
-builds a mapping from each unique word to the number of times it appears in the file.
+By *word-level index*, we mean a data structure that reads the input file incrementally and builds a mapping from each unique word to the number of times it appears in the file.
+
+---
 
 ## Supported Queries
-- #### Word Count Query
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Returns the frequency of a given word in a specified version.
 
-- #### Difference Query
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Computes the difference in frequency of a word between two versions.
+- #### Word Count Query  
+  Returns the frequency of a given word in a specified version.
 
-- #### Top-K Query
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Displays the top-K most frequent words in a specified version.
+- #### Difference Query  
+  Computes the difference in frequency of a word between two versions.
 
-## Design
-- A class for buffered file reading
-- A class for tokenization
-- A class for versioned indexing
-- A class for query processing
+- #### Top-K Query  
+  Displays the top-K most frequent words in a specified version.
 
-## C++ opps features
-Implemented *inheritance*, *runtime polymorphism*, *function overloading*, *exception handling*, *user-defined template*.
+---
+
+## C++ OOP Features
+
+Implemented **inheritance**, **runtime polymorphism**, **function overloading**, **exception handling**, and **user-defined templates**.
+
+---
 
 ## Inputs From Command Line
-## Command Line Arguments
+
+### Command Line Arguments
 
 | Argument | Description |
 |--------|-------------|
@@ -44,26 +46,41 @@ Implemented *inheritance*, *runtime polymorphism*, *function overloading*, *exce
 | `--word <token>` | Word for word/diff queries |
 | `--top <k>` | Number of top results (top query) |
 
-## Examples 
+---
+
 ## Examples (Command-Line Usage)
 
-Examples:
+### Compile the code to generate the executable
 
-- **Word query (single file):**
+```bash
+g++ -O2 main.cpp -o analyzer
+```
+
+After compiling, run any one of the three queries. (This is just an example)
+
+---
+
+### Word Query (Single File)
 
 ```bash
 ./analyzer --file dataset_v1.txt --version v1 \
 --buffer 512 --query word --word error
 ```
-- **Top-K query (single file):**
+
+---
+
+### Top-K Query (Single File)
 
 ```bash
 ./analyzer --file dataset_v1.txt --version v1 \
---buffer 512 --query top --top 10 
+--buffer 512 --query top --top 10
 ```
 
-- **Difference query (two files):**
-``` bash
+---
+
+### Difference Query (Two Files)
+
+```bash
 ./analyzer --file1 dataset_v1.txt --version1 v1 \
 --file2 dataset_v2.txt --version2 v2 \
 --buffer 512 --query diff --word error

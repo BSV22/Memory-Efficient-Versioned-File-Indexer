@@ -28,7 +28,7 @@ public:
     }
 };
 
-class Tokenizor
+class Tokenizer
 {
 private:
     string carry;
@@ -80,7 +80,7 @@ public:
         unsigned int size = sizeKB * 1024;
         vector<char> buffer(size);
 
-        Tokenizor tokenizer;
+        Tokenizer tokenizer;
 
         while (1)
         {
@@ -120,7 +120,7 @@ public:
 
         return it2->second;
     }
-    // Function overloading : 
+    // Function overloading :
     long long cntWords(string &v1, string &v2, string &word)
     {
         return (long long)cntWords(v2, word) - (long long)cntWords(v1, word);
@@ -194,14 +194,14 @@ public:
     }
 };
 // Inheritence
-class Diff : public Query
+class Difference : public Query
 {
 private:
     VersionIndexer &indexer;
     string v1, v2, word;
 
 public:
-    Diff(VersionIndexer &indx, string &v1, string &v2, string &word) : indexer(indx), v1(v1), v2(v2), word(word) {}
+    Difference(VersionIndexer &indx, string &v1, string &v2, string &word) : indexer(indx), v1(v1), v2(v2), word(word) {}
 
     void RunQuery()
     {
@@ -330,7 +330,7 @@ int main(int n, char *input[])
 
             string word = In.get("--word");
 
-            q = new Diff(indexer, v1, v2, word);
+            q = new Difference(indexer, v1, v2, word);
         }
         else
         {
